@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export const AddTicketsPage = () => {
+const AddTicketsPage = () => {
     const { classes } = useStyles();
 
     const onFormSubmit = (values: AddTicketsFormValues) => {
@@ -34,3 +34,5 @@ export const AddTicketsPage = () => {
         </PageLayout>
     );
 };
+
+export default AddTicketsPage;
