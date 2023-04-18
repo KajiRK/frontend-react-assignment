@@ -3,7 +3,7 @@ import ticketsReducer from './ticketsSlice';
 
 export const store = configureStore({
     reducer: {
-        ticketsReducer,
+        tickets: ticketsReducer,
     },
 });
 

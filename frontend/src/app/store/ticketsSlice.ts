@@ -1,18 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
-const initialState = {};
+const initialState = {
+    tickets:[]
+};
 
 export const ticketsSlice = createSlice({
     name: 'tickets',
     initialState,
     reducers: {
-        fn: (state) => {
-            // implement the reducers
-        },
+        addTickets: (state, {payload}) => {
+            state.tickets = payload;
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { fn } = ticketsSlice.actions;
+export const { addTickets } = ticketsSlice.actions;
+export const fetchTickets = (state: RootState) => state.tickets.tickets;
 
 export default ticketsSlice.reducer;
