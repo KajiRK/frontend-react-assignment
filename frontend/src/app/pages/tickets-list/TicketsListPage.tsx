@@ -28,7 +28,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-const TicketsListPage = () => {
+export const TicketsListPage = () => {
     const { classes } = useStyles();
 
     return (
@@ -42,5 +42,3 @@ const TicketsListPage = () => {
         </PageLayout>
     );
 };
-
-export default TicketsListPage;
