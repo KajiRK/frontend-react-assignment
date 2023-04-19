@@ -1,11 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
-import { Grid, Input, Textarea, Button, createStyles } from '@mantine/core';
+import { Grid, Input, Textarea, Button, createStyles, Alert } from '@mantine/core';
 import { colors } from '../constants/colors';
 import { FormLabel } from '../../view/components/Forms/FormLabel';
 import { FormProps } from '../interfaces/form';
 import { AddTicketsFormValues, ticketValidationSchema } from '../../data/models/Ticket';
+import { getCreateTicketSuccess, getCreateTicketSuccessMessage, getCreateTicketError, getCreateTicketErrorMessage } from '../store/ticketsSlice';
 
 const useStyles = createStyles((theme) => ({
     buttonContainer: {
@@ -29,16 +31,40 @@ const defaultValues: AddTicketsFormValues = {
 };
 
 export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) => {
+    const { classes } = useStyles();
 
-    const { control, handleSubmit, formState: { errors } } = useForm<AddTicketsFormValues>({ 
+    const { control, handleSubmit, reset, formState: { errors } } = useForm<AddTicketsFormValues>({ 
         resolver: yupResolver(ticketValidationSchema),
         defaultValues 
     });
 
-    const { classes } = useStyles();
+    const handleOnSubmit = (data: AddTicketsFormValues) => {
+        onSubmit(data);
+        reset();
+    };
+
+    // error and succuess reponses from POST Ticket 
+    const createTicketError = useSelector(getCreateTicketError); 
+    const createTicketErrorMessage = useSelector(getCreateTicketErrorMessage); 
+    const createTicketSuccess = useSelector(getCreateTicketSuccess); 
+    const createTicketSuccessMessage = useSelector(getCreateTicketSuccessMessage); 
 
     return (
         <Grid>
+            {createTicketError && (
+                <Grid.Col span={12}>
+                    <Alert title="Error!" color="red">
+                        {createTicketErrorMessage}
+                    </Alert>
+                </Grid.Col>
+            )}
+            {createTicketSuccess && (
+                <Grid.Col span={12}>
+                    <Alert title="Success!" color="green">
+                        {createTicketSuccessMessage}
+                    </Alert>
+                </Grid.Col>
+            )}
             <Grid.Col span={12}>
                 <Controller
                     name="email"
@@ -152,7 +178,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                 />
             </Grid.Col>
             <Grid.Col span={12} className={classes.buttonContainer}>
-                <Button onClick={handleSubmit(onSubmit)}>Add tickets</Button>
+                <Button onClick={handleSubmit(handleOnSubmit)}>Add tickets</Button>
             </Grid.Col>
         </Grid>
     );

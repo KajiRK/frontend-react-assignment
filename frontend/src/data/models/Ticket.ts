@@ -25,6 +25,12 @@ export interface StoreTicketRequest {
 
 export interface TicketStateValues {
     tickets: Ticket[];
+    fetchTicketsError: boolean;
+    fetchTicketsErrorMessage?: string;
+    createTicketSuccess: boolean;
+    createTicketSuccessMessage?: string;
+    createTicketError: boolean;
+    createTicketErrorMessage?: string;
 }
 
 export const ticketValidationSchema = yup

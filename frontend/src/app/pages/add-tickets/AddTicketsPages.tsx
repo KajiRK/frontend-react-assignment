@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { Paper, createStyles, Center } from '@mantine/core';
 import { PageLayout } from '../../../view/components/PageLayout/PageLayout';
 import { colors } from '../../constants/colors';
@@ -23,14 +22,12 @@ const useStyles = createStyles((theme) => ({
 
 export const AddTicketsPage = () => {
     const { classes } = useStyles();
-    const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
-    const onFormSubmit = (values: AddTicketsFormValues) => {
+    const onFormSubmit = async (values: AddTicketsFormValues) => {
         dispatch(createTicket(values));
-        navigate('/tickets');
     };
-
+    
     return (
         <PageLayout>
             <Center>
