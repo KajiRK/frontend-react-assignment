@@ -1,11 +1,11 @@
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProps } from '../interfaces/form';
 import { useForm, Controller } from 'react-hook-form';
 import { Grid, Input, Textarea, Button, createStyles } from '@mantine/core';
-import { FormLabel } from '../../view/components/Forms/FormLabel';
 import { colors } from '../constants/colors';
-import { ticketValidationSchema } from '../../data/models/Ticket';
+import { FormLabel } from '../../view/components/Forms/FormLabel';
+import { FormProps } from '../interfaces/form';
+import { AddTicketsFormValues, ticketValidationSchema } from '../../data/models/Ticket';
 
 const useStyles = createStyles((theme) => ({
     buttonContainer: {
@@ -18,15 +18,6 @@ const useStyles = createStyles((theme) => ({
         fontSize: '.875rem'
     },
 }));
-
-export interface AddTicketsFormValues {
-    email: string;
-    title: string;
-    description: string;
-    price: string;
-    amount: number;
-    supplier: string;
-}
 
 const defaultValues: AddTicketsFormValues = {
     email: '',

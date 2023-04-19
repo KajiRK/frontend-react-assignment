@@ -1,11 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Paper, createStyles, Center } from '@mantine/core';
 import { PageLayout } from '../../../view/components/PageLayout/PageLayout';
 import { colors } from '../../constants/colors';
 import { TicketsListTable } from '../../tables/TicketsListTable';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTickets, getTickets } from '../../store/ticketsSlice';
 import { AppDispatch } from '../../store/store';
+import { fetchTickets, getTickets } from '../../store/ticketsSlice';
 
 const useStyles = createStyles((theme) => ({
     formContainer: {

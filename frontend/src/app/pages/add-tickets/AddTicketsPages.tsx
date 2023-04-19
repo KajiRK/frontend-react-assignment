@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Paper, createStyles, Center } from '@mantine/core';
 import { PageLayout } from '../../../view/components/PageLayout/PageLayout';
+import { colors } from '../../constants/colors';
 import { AddTicketsForm } from '../../forms/AddTicketsForm';
 import { AddTicketsFormValues } from '../../../data/models/Ticket';
-import { colors } from '../../constants/colors';
 import { AppDispatch } from '../../store/store';
 import { createTicket } from '../../store/ticketsSlice';
 
