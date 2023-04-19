@@ -1,18 +1,9 @@
 import React from 'react';
 import { Table } from '@mantine/core';
-
-export interface TicketsListTableItemVM {
-    id: string;
-    email: string;
-    title: string;
-    description: string;
-    price: string;
-    amount: number;
-    supplier: string;
-}
+import { Ticket } from '../../data/models/Ticket';
 
 interface TicketsListTableProps {
-    items: TicketsListTableItemVM[];
+    items: Ticket[];
 }
 
 export const TicketsListTable = ({ items }: TicketsListTableProps) => {

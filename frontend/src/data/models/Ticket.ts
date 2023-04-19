@@ -10,6 +10,23 @@ export interface Ticket {
     supplier: string;
 }
 
+export interface AddTicketsFormValues {
+    email: string;
+    title: string;
+    description: string;
+    price: string;
+    amount: number;
+    supplier: string;
+}
+
+export interface StoreTicketRequest {
+    ticket: AddTicketsFormValues;
+}
+
+export interface TicketStateValues {
+    tickets: Ticket[];
+}
+
 export const ticketValidationSchema = yup
     .object({
         email: yup.string().required('Email field is required').email('Must be a valid email'),

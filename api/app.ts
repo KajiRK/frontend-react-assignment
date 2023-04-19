@@ -1,9 +1,12 @@
 import express, { Application } from "express";
 import http from "http";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const app: Application = express();
 const server = http.createServer(app);
+
+app.use(cors());
 
 // Setup
 app.use(bodyParser.json());

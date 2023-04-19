@@ -1,8 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Paper, createStyles, Center } from '@mantine/core';
 import { PageLayout } from '../../../view/components/PageLayout/PageLayout';
-import { AddTicketsForm, AddTicketsFormValues } from '../../forms/AddTicketsForm';
+import { AddTicketsForm } from '../../forms/AddTicketsForm';
+import { AddTicketsFormValues } from '../../../data/models/Ticket';
 import { colors } from '../../constants/colors';
+import { AppDispatch } from '../../store/store';
+import { createTicket } from '../../store/ticketsSlice';
 
 const useStyles = createStyles((theme) => ({
     formContainer: {
@@ -18,9 +23,12 @@ const useStyles = createStyles((theme) => ({
 
 export const AddTicketsPage = () => {
     const { classes } = useStyles();
+    const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
 
     const onFormSubmit = (values: AddTicketsFormValues) => {
-        console.log('Implement submitting the form', values);
+        dispatch(createTicket(values));
+        navigate('/tickets');
     };
 
     return (

@@ -3,9 +3,9 @@ import { Paper, createStyles, Center } from '@mantine/core';
 import { PageLayout } from '../../../view/components/PageLayout/PageLayout';
 import { colors } from '../../constants/colors';
 import { TicketsListTable } from '../../tables/TicketsListTable';
-import { getTickets } from '../../../data/services/Tickets';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTickets, fetchTickets } from '../../store/ticketsSlice';
+import { fetchTickets, getTickets } from '../../store/ticketsSlice';
+import { AppDispatch } from '../../store/store';
 
 const useStyles = createStyles((theme) => ({
     formContainer: {
@@ -21,15 +21,11 @@ const useStyles = createStyles((theme) => ({
 
 export const TicketsListPage = () => {
     const { classes } = useStyles();
-    const dispatch = useDispatch();
-    const tickets = useSelector(fetchTickets); 
+    const dispatch = useDispatch<AppDispatch>();
+    const tickets = useSelector(getTickets); 
 
     React.useEffect(() => {
-        const loadTickets = async () => {
-            const response = await getTickets();
-            dispatch(addTickets(response));
-        };
-        loadTickets();
+        dispatch(fetchTickets());
     }, [dispatch]);
 
     return (
