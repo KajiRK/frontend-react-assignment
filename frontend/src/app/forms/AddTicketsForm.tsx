@@ -73,7 +73,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                         return (
                             <>
                                 <FormLabel>Email</FormLabel>
-                                <Input onChange={onChange} value={value} name={name} />
+                                <Input onChange={onChange} value={value} name={name} data-testid="email-input" />
                                 {errors.email && (
                                     <span className={classes.errorMessage}>{errors.email.message}</span>
                                 )}
@@ -90,7 +90,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                         return (
                             <>
                                 <FormLabel>Title</FormLabel>
-                                <Input onChange={onChange} value={value} name={name} />
+                                <Input onChange={onChange} value={value} name={name} data-testid="title-input" />
                                 {errors.title && (
                                     <span className={classes.errorMessage}>{errors.title.message}</span>
                                 )}
@@ -107,7 +107,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                         return (
                             <>
                                 <FormLabel>Description</FormLabel>
-                                <Textarea onChange={onChange} value={value} name={name} />
+                                <Textarea onChange={onChange} value={value} name={name} data-testid="description-input" />
                                 {errors.description && (
                                     <span className={classes.errorMessage}>{errors.description.message}</span>
                                 )}
@@ -129,6 +129,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                                     onChange={onChange}
                                     value={value}
                                     name={name}
+                                    data-testid="price-input"
                                 />
                                 {errors.price && (
                                     <span className={classes.errorMessage}>{errors.price.message}</span>
@@ -151,6 +152,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                                     onChange={onChange}
                                     value={value}
                                     name={name}
+                                    data-testid="amount-input"
                                 />
                                 {errors.amount && (
                                     <span className={classes.errorMessage}>{errors.amount.message}</span>
@@ -168,7 +170,7 @@ export const AddTicketsForm = ({ onSubmit }: FormProps<AddTicketsFormValues>) =>
                         return (
                             <>
                                 <FormLabel>Supplier</FormLabel>
-                                <Input onChange={onChange} value={value} name={name} />
+                                <Input onChange={onChange} value={value} name={name} data-testid="supplier-input" />
                                 {errors.supplier && (
                                     <span className={classes.errorMessage}>{errors.supplier.message}</span>
                                 )}

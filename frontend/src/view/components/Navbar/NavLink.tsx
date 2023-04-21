@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { createStyles } from '@mantine/core';
 import { BaseComponent } from '../../../app/interfaces/BaseComponent';
 import { useGenericStyles } from '../../../app/styles/useGenericStyles';
@@ -23,8 +24,8 @@ export const NavLink = ({ children, href }: NavLinkProps) => {
     const { classes: genericClasses } = useGenericStyles();
 
     return (
-        <a href={href} className={classNames(classes.link, genericClasses.hoverable)}>
+        <Link to={href} className={classNames(classes.link, genericClasses.hoverable)}>
             {children}
-        </a>
+        </Link>
     );
 };

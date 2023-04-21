@@ -11,7 +11,7 @@ const useStyles = createStyles(() => ({
 }));
 
 interface TicketsListTableProps {
-    items: Ticket[];
+    items?: Ticket[];
 }
 
 export const TicketsListTable = ({ items }: TicketsListTableProps) => {
@@ -21,7 +21,7 @@ export const TicketsListTable = ({ items }: TicketsListTableProps) => {
     const fetchTicketsError = useSelector(getFetchTicketsError); 
     const fetchTicketsErrorMessage = useSelector(getFetchTicketsErrorMessage); 
 
-    const rows = items.map((element) => (
+    const rows = items && items.map((element) => (
         <tr key={element.id}>
             <td>{element.email}</td>
             <td>{element.title}</td>
@@ -55,7 +55,13 @@ export const TicketsListTable = ({ items }: TicketsListTableProps) => {
                         <th>Supplier</th>
                     </tr>
                 </thead>
-                <tbody>{rows}</tbody>
+                <tbody data-testid="tickets-table">
+                    {items && items.length ? (
+                        <>{rows}</>
+                    ) : (
+                        <tr><td colSpan={6}>No Tickets Found!</td></tr>
+                    )}
+                </tbody>
             </Table>
         </>
     );

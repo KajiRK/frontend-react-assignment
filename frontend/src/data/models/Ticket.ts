@@ -39,6 +39,6 @@ export const ticketValidationSchema = yup
         title: yup.string().required('Title field is required'),
         description: yup.string().required('Description field is required'),
         price: yup.number().typeError('Price must be in number type').min(1, 'Price must be greater than or equal to 1'),
-        amount: yup.number().typeError('Amount of tickets must be in number type').min(1, 'Amount must be greater than or equal to 1'),
+        amount: yup.number().typeError('Amount of tickets must be in number type').min(1, 'Amount of tickets must be greater than or equal to 1'),
         supplier: yup.string().required('Supplier field is required')
     }).required();
